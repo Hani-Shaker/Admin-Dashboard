@@ -2,8 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+// import { FcGoogle } from "react-icons/fc";
+// import { FaGithub } from "react-icons/fa";
 import api from "../api/axios";
 import { useAuth } from "../context/useAuth";
 import Icon from "../components/Icon";
@@ -291,7 +291,7 @@ export default function Login() {
                   }}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                 >
-                  <FcGoogle className="h-5 w-5" />
+                  {/* <FcGoogle className="h-5 w-5" /> */}
                   <span>Google</span>
                 </button>
 
@@ -302,7 +302,7 @@ export default function Login() {
                   }}
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-indigo-300"
                 >
-                  <FaGithub className="h-5 w-5" />
+                  {/* <FaGithub className="h-5 w-5" /> */}
                   <span>GitHub</span>
                 </button>
               </div>
