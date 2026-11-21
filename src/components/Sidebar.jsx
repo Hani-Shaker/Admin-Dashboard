@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
- 
+
 /* ===== Icons (SVG) ===== */
 const IconDashboard = (props) => (
   <svg
@@ -17,6 +17,22 @@ const IconDashboard = (props) => (
     <rect x="3" y="16" width="7" height="5" rx="1" />
   </svg>
 );
+const IconUsers = (props) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+  </svg>
+);
 const IconProducts = (props) => (
   <svg
     {...props}
@@ -32,7 +48,37 @@ const IconProducts = (props) => (
     <path d="M10 12h4" />
   </svg>
 );
+const IconAddProduct = (props) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M12 5v14M5 12h14" />
+  </svg>
+);
 const IconOrders = (props) => (
+  <svg
+    {...props}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+    <path d="M14 2v6h6" />
+    <path d="M16 13H8" />
+    <path d="M16 17H8" />
+    <path d="M10 9H8" />
+  </svg>
+);
+const IconCarts = (props) => (
   <svg
     {...props}
     viewBox="0 0 24 24"
@@ -47,7 +93,7 @@ const IconOrders = (props) => (
     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
   </svg>
 );
-const IconUsers = (props) => (
+const IconSettings = (props) => (
   <svg
     {...props}
     viewBox="0 0 24 24"
@@ -57,10 +103,8 @@ const IconUsers = (props) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    <circle cx="12" cy="12" r="3" />
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
   </svg>
 );
 const IconStore = (props) => (
@@ -81,9 +125,12 @@ const IconStore = (props) => (
 
 const navItems = [
   { to: "/dashboard", label: "Dashboard", icon: IconDashboard },
-  { to: "/products", label: "Products", icon: IconProducts },
-  { to: "/orders", label: "Orders", icon: IconOrders },
   { to: "/users", label: "Users", icon: IconUsers },
+  { to: "/products", label: "Products", icon: IconProducts },
+  { to: "/add-product", label: "Add Product", icon: IconAddProduct },
+  { to: "/orders", label: "Orders", icon: IconOrders },
+  { to: "/carts", label: "Carts", icon: IconCarts },
+  { to: "/settings", label: "Settings", icon: IconSettings },
 ];
 
 export default function Sidebar() {
@@ -94,7 +141,7 @@ export default function Sidebar() {
           <IconStore className="h-5 w-5 text-white" />
         </div>
         <div className="leading-tight">
-          <h1 className="text-base font-bold tracking-wide">SEF Store</h1>
+          <h1 className="text-base font-bold tracking-wide">KODA STORE</h1>
           <p className="text-[11px] text-slate-400">Admin Panel</p>
         </div>
       </div>
@@ -128,7 +175,7 @@ export default function Sidebar() {
       </nav>
 
       <div className="border-t border-slate-800 px-5 py-4 text-[11px] text-slate-500">
-        © {new Date().getFullYear()} SEF Academy
+        © {new Date().getFullYear()} KODA Store
       </div>
     </aside>
   );
