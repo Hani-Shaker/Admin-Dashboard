@@ -1,26 +1,25 @@
-
-import './App.css'
-import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecentOrders from './components/RecentOrders'
 import DashboardLayout from './layouts/DashboardLayout'
 import Login from './pages/Login'
+import './App.css'
 
 
 function App() {
   return (
-        <BrowserRouter>
+    <BrowserRouter>
       <Routes>
 
         {/* صفحة تسجيل الدخول بدون Sidebar */}
         <Route path="/login" element={<Login />} />
 
         {/* باقي الصفحات داخل Layout */}
-        <Route element={<DashboardLayout />}>
+        <Route path="/" element={<DashboardLayout />}>
           {/* <Route path="/" element={<Dashboard />} /> */}
           {/* <Route path="/products" element={<Products />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/users" element={<Users />} /> */}
-          <Route path="/recent-orders" element={<RecentOrders />} /> 
+          <Route path="/recent-orders" element={<RecentOrders />} />
         </Route>
 
       </Routes>
@@ -41,7 +40,7 @@ function App() {
     //       </p>
     //     </header>
 
-        // <RecentOrders />
+    // <RecentOrders />
     //   </div>
     // </main>
   )

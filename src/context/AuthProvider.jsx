@@ -26,6 +26,7 @@ export function AuthProvider({ children }) {
         user,
         token,
         isAuthenticated: !!token,
+        loading: token && !user,
         login,
         logout,
       }}

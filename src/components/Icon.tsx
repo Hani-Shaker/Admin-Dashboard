@@ -12,8 +12,13 @@ const PATHS = {
   refresh: 'M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5',
   logout: 'M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9',
   arrow: 'M5 12h14M13 5l7 7-7 7',
+  "arrow-up": 'M12 19V5M5 12l7-7 7 7',
+  "arrow-down": 'M12 5v14M19 12l-7 7-7-7',
+  "arrow-left": 'M19 12H5M12 19l-7-7 7-7',
+  "arrow-right": 'M5 12h14M12 5l7 7-7 7',
   check: 'M20 6L9 17l-5-5',
   check2: 'M5 13l4 4L19 7',
+  error: 'M18 6L6 18M6 6l12 12',
   shield: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z',
   undo: 'M3 7v6h6M3 13a9 9 0 1 0 3-7.7L3 8',
   truck: 'M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18.5 21a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
@@ -24,6 +29,12 @@ const PATHS = {
   close: 'M18 6L6 18M6 6l12 12',
   openEye: 'M3 3l18 18M10.58 10.58a2 2 0 002.84 2.84M9.88 5.09A9.77 9.77 0 0112 5c4.48 0 8.27 2.94 9.54 7a9.97 9.97 0 01-3.17 4.62M6.61 6.61A9.97 9.97 0 002.46 12c1.27 4.06 5.06 7 9.54 7 1.7 0 3.3-.42 4.7-1.17',
   closedEye: 'M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+  revenue: 'M12 8c-1.66 0-3 .9-3 2s1.34 2 3 2 3 .9 3 2-1.34 2-3 2m0-8V6m0 12v-2m0-10c1.1 0 2.1.35 2.8.9M12 18c-1.1 0-2.1-.35-2.8-.9M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
+  orders: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z',
+  customers: 'M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 014-4h2a4 4 0 014 4v2H9zm3-10a3 3 0 100-6 3 3 0 000 6zm7 0a2 2 0 100-4M5 10a2 2 0 110-4',
+  products: 'M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4',
+  default: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'
+
 } as const;
 
 export type IconName = keyof typeof PATHS;
@@ -31,15 +42,17 @@ export type IconName = keyof typeof PATHS;
 type strokeLineCapType = "butt" | "round" | "square" | "inherit" | undefined;
 type strokeLineJoinType = "round" | "inherit" | "miter" | "bevel" | undefined;
 
-export default function Icon({ iconName, size = 20, properties }: {
-  iconName: IconName; size?: number, properties?: {
+export default function Icon({ iconName, size = 20, path, properties }: {
+  iconName: IconName; size?: number, path?: string, properties?: {
     classes?: string | null,
     fill?: string,
     viewBox?: string,
     stroke?: string,
     strokeWidth?: string,
-    strokeLinecap?: strokeLineCapType ,
-    strokeLinejoin?: strokeLineJoinType
+    strokeLinecap?: strokeLineCapType,
+    strokeLinejoin?: strokeLineJoinType,
+    "aria-hidden"?: boolean,
+    "focusable"?: boolean
   }
 }) {
   return (
@@ -53,9 +66,10 @@ export default function Icon({ iconName, size = 20, properties }: {
       strokeWidth={properties?.strokeWidth ? `${properties.strokeWidth}` : "1.8"}
       strokeLinecap={properties?.strokeLinecap ? `${properties.strokeLinecap}` : "round"}
       strokeLinejoin={properties?.strokeLinejoin ? `${properties.strokeLinejoin}` : "round"}
-      aria-hidden="true"
-      focusable="false">
-      <path d={PATHS[iconName]} />
+      aria-hidden={properties?.["aria-hidden"] ?? true}
+      focusable={properties?.["focusable"] ?? false}
+    >
+      <path d={path || PATHS[iconName]} />
     </svg>
   );
 }
