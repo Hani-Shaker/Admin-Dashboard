@@ -1,49 +1,28 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import RecentOrders from './components/RecentOrders'
-import DashboardLayout from './layouts/DashboardLayout'
-import Login from './pages/Login'
-import './App.css'
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ProtectedRoute from './components/ProtectedRoute';
+import Layout from './components/Layout';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import ComingSoon from './pages/ComingSoon';
 
-
-function App() {
+export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
+    <Routes>
+      <Route path="/login" element={<Login />} />
 
-        {/* صفحة تسجيل الدخول بدون Sidebar */}
-        <Route path="/login" element={<Login />} />
-
-        {/* باقي الصفحات داخل Layout */}
-        <Route path="/" element={<DashboardLayout />}>
-          {/* <Route path="/" element={<Dashboard />} /> */}
-          {/* <Route path="/products" element={<Products />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/users" element={<Users />} /> */}
-          <Route path="/recent-orders" element={<RecentOrders />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/dashboard" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="products" element={<ComingSoon title="Products" />} />
+          <Route path="products/add" element={<ComingSoon title="Add Product" />} />
+          <Route path="settings" element={<ComingSoon title="Settings" />} />
+          <Route path="orders" element={<ComingSoon title="Orders" />} />
+          <Route path="users" element={<ComingSoon title="Users" />} />
+          <Route path="carts" element={<ComingSoon title="Carts" />} />
         </Route>
+      </Route>
 
-      </Routes>
-    </BrowserRouter>
-    // <main className="min-h-screen bg-gray-100 p-6 md:p-10">
-    //   <div className="mx-auto max-w-7xl">
-    //     <header className="mb-8">
-    //       <p className="mb-2 text-sm font-medium text-blue-600">
-    //         ADMIN DASHBOARD
-    //       </p>
-
-    //       <h1 className="text-3xl font-bold text-gray-900">
-    //         Dashboard
-    //       </h1>
-
-    //       <p className="mt-2 text-gray-500">
-    //         Welcome back! Here is your latest order activity.
-    //       </p>
-    //     </header>
-
-    // <RecentOrders />
-    //   </div>
-    // </main>
-  )
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
+  );
 }
-
-export default App

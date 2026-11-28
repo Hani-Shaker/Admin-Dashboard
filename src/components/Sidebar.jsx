@@ -1,182 +1,55 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+import { LayoutGrid, Users, Archive, Plus, FileText, ShoppingCart, Settings, Store, X } from 'lucide-react';
 
-/* ===== Icons (SVG) ===== */
-const IconDashboard = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <rect x="3" y="3" width="7" height="9" rx="1" />
-    <rect x="14" y="3" width="7" height="5" rx="1" />
-    <rect x="14" y="12" width="7" height="9" rx="1" />
-    <rect x="3" y="16" width="7" height="5" rx="1" />
-  </svg>
-);
-const IconUsers = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-    <circle cx="9" cy="7" r="4" />
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-  </svg>
-);
-const IconProducts = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M21 8V21H3V8" />
-    <path d="M1 3h22v5H1z" />
-    <path d="M10 12h4" />
-  </svg>
-);
-const IconAddProduct = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M12 5v14M5 12h14" />
-  </svg>
-);
-const IconOrders = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-    <path d="M14 2v6h6" />
-    <path d="M16 13H8" />
-    <path d="M16 17H8" />
-    <path d="M10 9H8" />
-  </svg>
-);
-const IconCarts = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="9" cy="21" r="1" />
-    <circle cx="20" cy="21" r="1" />
-    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-  </svg>
-);
-const IconSettings = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <circle cx="12" cy="12" r="3" />
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-  </svg>
-);
-const IconStore = (props) => (
-  <svg
-    {...props}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M3 9l1-5h16l1 5" />
-    <path d="M4 9v11h16V9" />
-    <path d="M9 22V12h6v10" />
-  </svg>
-);
-
-const navItems = [
-  { to: "/dashboard", label: "Dashboard", icon: IconDashboard },
-  { to: "/users", label: "Users", icon: IconUsers },
-  { to: "/products", label: "Products", icon: IconProducts },
-  { to: "/add-product", label: "Add Product", icon: IconAddProduct },
-  { to: "/orders", label: "Orders", icon: IconOrders },
-  { to: "/carts", label: "Carts", icon: IconCarts },
-  { to: "/settings", label: "Settings", icon: IconSettings },
+const links = [
+  { to: '/dashboard', label: 'Dashboard', icon: LayoutGrid, end: true },
+  { to: '/dashboard/users', label: 'Users', icon: Users },
+  { to: '/dashboard/products', label: 'Products', icon: Archive, end: true },
+  { to: '/dashboard/products/new', label: 'Add Product', icon: Plus },
+  { to: '/dashboard/orders', label: 'Orders', icon: FileText },
+  { to: '/dashboard/carts', label: 'Carts', icon: ShoppingCart },
+  { to: '/dashboard/settings', label: 'Settings', icon: Settings },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ open, onClose }) {
   return (
-    <aside className="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-slate-900 text-slate-100 shadow-xl">
-      <div className="flex h-16 items-center gap-3 border-b border-slate-800 px-5">
-        <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-indigo-500">
-          <IconStore className="h-5 w-5 text-white" />
+    <>
+      {open && <div className="fixed inset-0 z-30 bg-slate-900/50 lg:hidden" onClick={onClose} />}
+      <aside
+        className={`fixed inset-y-0 left-0 z-40 flex w-64 flex-col bg-navy text-slate-300 transition-transform lg:translate-x-0 ${
+          open ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex items-center gap-3 border-b border-white/10 px-6 py-5">
+          <div className="grid h-11 w-11 place-items-center rounded-xl bg-indigo-500 text-white"><Store size={22} /></div>
+          <div className="flex-1">
+            <p className="font-bold leading-tight text-white">KODA STORE</p>
+            <p className="text-xs text-slate-400">Admin Panel</p>
+          </div>
+          <button onClick={onClose} aria-label="Close menu" className="lg:hidden"><X size={20} /></button>
         </div>
-        <div className="leading-tight">
-          <h1 className="text-base font-bold tracking-wide">KODA STORE</h1>
-          <p className="text-[11px] text-slate-400">Admin Panel</p>
-        </div>
-      </div>
 
-      <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-6">
-        <p className="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-          Main Menu
-        </p>
-        {navItems.map(({ to, label, icon: Icon }) => (
-          <NavLink
-            key={to}
-            to={to}
-            className={({ isActive }) =>
-              `group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
-                isActive
-                  ? "bg-indigo-500 text-white shadow-sm"
-                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
-              }`
-            }
-          >
-            {({ isActive }) => (
-              <>
-                <Icon
-                  className={`h-[18px] w-[18px] ${isActive ? "text-white" : "text-slate-400 group-hover:text-white"}`}
-                />
-                <span>{label}</span>
-              </>
-            )}
-          </NavLink>
-        ))}
-      </nav>
+        <p className="px-6 pb-2 pt-6 text-xs font-medium tracking-wide text-slate-500">MAIN MENU</p>
+        <nav className="flex-1 space-y-1 px-3">
+          {links.map(({ to, label, icon: Icon, end }) => (
+            <NavLink
+              key={to}
+              to={to}
+              end={end}
+              onClick={onClose}
+              className={({ isActive }) =>
+                `flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+                  isActive ? 'bg-indigo-500/15 text-white' : 'hover:bg-white/5 hover:text-white'
+                }`
+              }
+            >
+              <Icon size={20} /> {label}
+            </NavLink>
+          ))}
+        </nav>
 
-      <div className="border-t border-slate-800 px-5 py-4 text-[11px] text-slate-500">
-        © {new Date().getFullYear()} KODA Store
-      </div>
-    </aside>
+        <p className="border-t border-white/10 px-6 py-4 text-xs text-slate-500">© 2026 KODA Store</p>
+      </aside>
+    </>
   );
 }

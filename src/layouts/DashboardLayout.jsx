@@ -1,5 +1,6 @@
 import { Outlet , useLocation } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+// import { LogOut } from 'lucide-react';
 
 const PAGE_TITLES = {
   dashboard: "Dashboard",
@@ -56,6 +57,10 @@ export default function DashboardLayout({
         <main className="min-w-0 flex-1 p-6">
           {children ?? <Outlet />}
         </main>
+        <button className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100">
+          {/* <LogOut className="h-4 w-4" /> */}
+          Logout
+        </button>
       </div>
     </div>
   );
